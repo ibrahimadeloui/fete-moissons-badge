@@ -372,6 +372,13 @@ footer p {
   margin: 0.15rem 0;
 }
 
+.credit {
+  margin-top: 0.55rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 @keyframes ticker {
   from {
     transform: translateX(0);
