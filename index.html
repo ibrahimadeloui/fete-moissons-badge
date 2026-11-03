@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#06308f" />
+    <title>J'y serai — Grande fête des Moissons, 54ᵉ édition</title>
+    <meta
+      name="description"
+      content="Créez votre badge « J'y serai » pour la 54ᵉ édition de la Grande Fête des Moissons. Paroisse Cité d'Abraham de Djègan-Kpévi, le 08 novembre 2026."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="J'y serai — Grande fête des Moissons, 54ᵉ édition" />
+    <meta
+      property="og:description"
+      content="Ajoutez votre photo et téléchargez votre badge pour la fête des moissons du 08 novembre 2026. Paroisse Cité d'Abraham de Djègan-Kpévi."
+    />
+    <meta property="og:image" content="/assets/og.jpg" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <canvas id="sparks" aria-hidden="true"></canvas>
+
+    <div class="marquee" role="region" aria-label="Message de bienvenue">
+      <div class="marquee-track">
+        <p>
+          Bienvenue à la 54<sup>e</sup> édition de la Grande Fête des Moissons — Paroisse Cité
+          d'Abraham de Djègan-Kpévi — Dimanche 08 novembre 2026 — Semer par la foi, donner par
+          amour et récolter par la grâce — J'y serai !
+        </p>
+        <p aria-hidden="true">
+          Bienvenue à la 54<sup>e</sup> édition de la Grande Fête des Moissons — Paroisse Cité
+          d'Abraham de Djègan-Kpévi — Dimanche 08 novembre 2026 — Semer par la foi, donner par
+          amour et récolter par la grâce — J'y serai !
+        </p>
+      </div>
+    </div>
+
+    <header class="hero">
+      <p class="eyebrow">Église du Christianisme Céleste</p>
+      <p class="parish">Paroisse Cité d'Abraham de Djègan-Kpévi</p>
+      <h1>Grande fête des <span>Moissons</span></h1>
+      <p class="edition">
+        <span class="pill">54<sup>e</sup> édition</span>
+        <span class="dot" aria-hidden="true"></span>
+        08 novembre 2026
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="stage" aria-label="Aperçu du badge">
+        <div class="canvas-wrap">
+          <canvas id="badge" aria-label="Badge J'y serai. La zone de gauche reçoit votre photo."></canvas>
+          <p id="loading" class="loading">Préparation de l'affiche…</p>
+        </div>
+        <p class="slogan">
+          Semer par la foi, donner par amour et récolter par la <em>grâce</em>.
+        </p>
+        <p class="verse">2 Corinthiens 9, 6-10</p>
+      </section>
+
+      <section class="panel" aria-labelledby="panel-title">
+        <h2 id="panel-title">Mon badge « J'y serai »</h2>
+        <p class="lead">
+          Choisissez une photo, cadrez votre visage, puis téléchargez le badge. Aucune inscription.
+        </p>
+
+        <label class="btn btn-light" for="photo">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M9 3.5 7.8 5H5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2.8L15 3.5H9Zm3 4.2a4.3 4.3 0 1 1 0 8.6 4.3 4.3 0 0 1 0-8.6Z"
+            />
+          </svg>
+          Choisir ma photo
+        </label>
+        <input
+          id="photo"
+          type="file"
+          accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp"
+          hidden
+        />
+
+        <div class="sliders" id="tools" hidden>
+          <label class="slider">
+            <span>Zoom <strong id="zoom-value">100 %</strong></span>
+            <input id="zoom" type="range" min="100" max="300" value="100" step="1" />
+          </label>
+          <label class="slider">
+            <span>Rotation <strong id="rotate-value">0°</strong></span>
+            <input id="rotate" type="range" min="-180" max="180" value="0" step="1" />
+          </label>
+          <button type="button" class="btn btn-ghost" id="reset">Recentrer</button>
+          <p class="hint">Glissez la photo avec le doigt ou la souris. Pincez pour zoomer.</p>
+        </div>
+
+        <button type="button" class="btn btn-gold" id="download" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M12 3a1 1 0 0 1 1 1v9.2l2.6-2.6a1 1 0 1 1 1.4 1.4l-4.3 4.3a1 1 0 0 1-1.4 0l-4.3-4.3a1 1 0 1 1 1.4-1.4L11 13.2V4a1 1 0 0 1 1-1Zm-7 15a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z"
+            />
+          </svg>
+          Télécharger mon badge
+        </button>
+        <button type="button" class="btn btn-share" id="share" disabled>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M18 16.1a2.9 2.9 0 0 0-2.3 1.1l-6.2-3.2a2.8 2.8 0 0 0 0-2l6.2-3.2A2.9 2.9 0 1 0 15 6a2.9 2.9 0 0 0 .1.7L8.9 9.9a3 3 0 1 0 0 4.2l6.2 3.2a2.9 2.9 0 1 0 2.9-1.2Z"
+            />
+          </svg>
+          Partager mon badge
+        </button>
+        <p class="ios-note" id="ios-note" hidden>
+          Sur iPhone, touchez « Partager mon badge », puis « Enregistrer l'image » pour la ranger
+          dans la galerie.
+        </p>
+        <div class="link-row">
+          <button type="button" class="text-btn" id="whatsapp">Envoyer le lien sur WhatsApp</button>
+          <button type="button" class="text-btn" id="facebook">Partager le lien sur Facebook</button>
+        </div>
+        <p class="privacy">Votre photo reste sur cet appareil. Elle n'est ni envoyée ni enregistrée en ligne.</p>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Église du Christianisme Céleste · Paroisse Cité d'Abraham de Djègan-Kpévi</p>
+      <p>Grande fête des Moissons · 54<sup>e</sup> édition · 08 novembre 2026</p>
+    </footer>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>
